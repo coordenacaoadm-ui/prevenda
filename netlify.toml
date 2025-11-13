@@ -1,0 +1,20 @@
+
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+  command = "npm install"
+
+[[redirects]]
+  from = "/install"
+  to = "/.netlify/functions/api"
+  status = 200
+
+[[redirects]]
+  from = "/oauth/callback"
+  to = "/.netlify/functions/api"
+  status = 200
+
+[[redirects]]
+  from = "/webhooks/orders/create"
+  to = "/.netlify/functions/api"
+  status = 200
