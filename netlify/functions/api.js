@@ -83,5 +83,42 @@ app.post('/webhooks/orders/create', async (req, res) => {
     res.sendStatus(500);
   }
 });
+// LGPD — Store redact (apaga/anônimiza dados da LOJA no seu app)
+app.post('/webhooks/lgpd/store-redact', async (req, res) => {
+  try {
+    // TODO: remover/anônimizar todos os dados da loja no seu banco, se você armazenar algo
+    console.log('[LGPD] store-redact', req.body);
+    return res.sendStatus(200);
+  } catch (e) {
+    console.error('[LGPD] store-redact error', e);
+    return res.sendStatus(500);
+  }
+});
+
+// LGPD — Customers redact (apaga/anônimiza DADOS DO CLIENTE)
+app.post('/webhooks/lgpd/customers-redact', async (req, res) => {
+  try {
+    // TODO: remover/anônimizar dados do cliente no seu banco (ex.: por customer_id/email)
+    console.log('[LGPD] customers-redact', req.body);
+    return res.sendStatus(200);
+  } catch (e) {
+    console.error('[LGPD] customers-redact error', e);
+    return res.sendStatus(500);
+  }
+});
+
+// LGPD — Customers data request (fornece dados ao lojista/plataforma, se você guarda algo)
+app.post('/webhooks/lgpd/customers-data-request', async (req, res) => {
+  try {
+    // TODO: montar retorno com os dados do cliente que seu app mantém (se algum)
+    console.log('[LGPD] customers-data-request', req.body);
+    // Você pode só acusar recebimento (200) se não guarda dados pessoais
+    return res.sendStatus(200);
+  } catch (e) {
+    console.error('[LGPD] customers-data-request error', e);
+    return res.sendStatus(500);
+  }
+});
+
 
 export const handler = serverless(app);
