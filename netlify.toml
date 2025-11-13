@@ -3,6 +3,9 @@
   functions = "netlify/functions"
   command = "npm install"
 
+[functions]
+  node_bundler = "esbuild"
+
 [[redirects]]
   from = "/install"
   to = "/.netlify/functions/api"
@@ -17,6 +20,3 @@
   from = "/webhooks/orders/create"
   to = "/.netlify/functions/api"
   status = 200
-
-[functions]
-  node_bundler = "esbuild"
